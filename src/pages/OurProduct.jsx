@@ -1,28 +1,55 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footor from '../components/Footor';
+import oystermushroomimg from "../assets/oystermushroom.jpg";
+import roseimg from "../assets/rose.jpg";
+import jasmineimg from "../assets/jasmin.png";
+import hibiscusimg from "../assets/hibiscus.jpg";
+import dryroseimg from "../assets/dryrose.png";
+import drygingerimg from "../assets/dryginger.jpg";
 
 const products = [
   {
     id: 1,
-    title: "Organic Shiitake Mushrooms",
+    title: "Oystor Mushrooms",
     price: 250,
     rating: 4.5,
-    image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=600&q=80",
+    image: oystermushroomimg,
   },
   {
     id: 2,
-    title: "Fresh Oyster Mushrooms",
+    title: "Rose",
     price: 200,
     rating: 4,
-    image: "https://images.unsplash.com/photo-1589533615033-29fa407bc474?auto=format&fit=crop&w=600&q=80",
+    image: roseimg,
   },
   {
     id: 3,
-    title: "Button Mushrooms",
+    title: "Jasmin",
     price: 180,
     rating: 4.8,
-    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80",
+    image: jasmineimg,
+  },
+  {
+    id: 4,
+    title: "Hibiscus",
+    price: 180,
+    rating: 4.8,
+    image: hibiscusimg,
+  },
+  {
+    id: 5,
+    title: "Dry Rose",
+    price: 180,
+    rating: 4.8,
+    image: dryroseimg,
+  },
+  {
+    id: 6,
+    title: "Dry Ginger",
+    price: 180,
+    rating: 4.8,
+    image: drygingerimg,
   },
 ];
 
@@ -57,30 +84,47 @@ function StarRating({ rating }) {
     </div>
   );
 }
-
 function OurProduct() {
   return (
     <>
       <Navbar />
-      <main className="bg-[#f3ede2] min-h-screen py-20 px-6 md:px-16">
+      <main className="bg-[#f3ede2] min-h-screen py-20 px-10 md:px-16">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl font-extrabold mb-12 text-[#3e2f26]">Our Products</h1>
-          <div className="grid gap-12 md:grid-cols-3">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-10 text-[#3e2f26] text-center">
+            Our Products
+          </h1>
+          <div className="grid gap-15 md:grid-cols-3">
             {products.map(({ id, title, price, rating, image }) => (
               <div
                 key={id}
-                className="flex flex-col bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+                className="relative flex flex-col bg-white rounded-2xl shadow-md overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-xl"
               >
-                <img src={image} alt={title} className="w-full h-72 object-cover rounded-t-3xl" />
-                <div className="p-8 flex flex-col flex-grow">
-                  <h2 className="text-3xl font-semibold text-[#3e2f26] mb-4">{title}</h2>
+                {/* Accent background */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[#d9b382]/10 to-transparent rounded-2xl z-0"></div>
+
+                {/* Product Image */}
+                <div className="relative w-full h-50 overflow-hidden rounded-t-2xl">
+                  <img
+                    src={image}
+                    alt={title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  />
+                </div>
+
+                {/* Product Details */}
+                <div className="p-6 flex flex-col flex-grow z-10 relative">
+                  <h2 className="text-2xl font-semibold text-[#3e2f26] mb-2">{title}</h2>
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="bg-gradient-to-r from-[#d9b382] to-[#b7c6a0] text-[#3e2f26] font-bold px-3 py-1 rounded-full text-lg">
+                      ₹{price}/kg
+                    </span>
+                  </div>
                   <StarRating rating={rating} />
-                  <p className="text-[#5a4638] text-2xl font-bold mt-6">₹{price}/kg</p>
-                  <div className="mt-auto flex space-x-6">
-                    <button className="flex-1 bg-[#d9b382] text-[#3e2f26] font-bold py-4 rounded-xl hover:bg-[#b7c6a0] transition">
+                  <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                    <button className="flex-1 bg-gradient-to-r from-[#d9b382] to-[#b7c6a0] text-[#3e2f26] font-semibold py-3 rounded-lg hover:from-[#b7c6a0] hover:to-[#d9b382] hover:scale-105 transition-all duration-300">
                       Add to Cart
                     </button>
-                    <button className="flex-1 bg-[#3e2f26] text-[#f3ede2] font-bold py-4 rounded-xl hover:bg-[#2b251f] transition">
+                    <button className="flex-1 bg-[#3e2f26] text-[#f3ede2] font-semibold py-3 rounded-lg hover:bg-[#2b251f] hover:scale-105 transition-all duration-300">
                       Buy Now
                     </button>
                   </div>

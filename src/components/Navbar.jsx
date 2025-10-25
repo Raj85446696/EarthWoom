@@ -10,8 +10,8 @@ const Navbar = () => {
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <div className="flex flex-col leading-tight">
-            <span className="text-2xl font-bold text-[#d9b382]">Earthwoom</span>
-            <span className="ml-15 text-xs text-[#b7c6a0] tracking-wide">Since 2025</span>
+            <span className="text-2xl font-bold text-[#d9b382]">Mushvalley Farms</span>
+            <span className="ml-0 text-xs text-[#b7c6a0] tracking-wide">Since 2025</span>
           </div>
 
           {/* Desktop Menu */}

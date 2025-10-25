@@ -10,7 +10,7 @@ function Aboutus() {
         {/* Top Section with Image + About */}
         <div className="w-full max-w-7xl flex flex-col md:flex-row items-center px-4 md:px-10 mt-8 md:mt-20">
           <div className="flex-1 mb-8 md:mb-0 md:mr-12 animate-fadeInLeft">
-            <h2 className="text-3xl font-bold text-[#3e2f26] mb-4">About Mushroom Store</h2>
+            <h2 className="text-3xl font-bold text-[#3e2f26] mb-4">About Our Store</h2>
             <p className="text-[#5a4638] text-lg mb-6">
               We’re passionate about growing and delivering the freshest organic mushrooms. Founded on principles of sustainability and quality, our mission is to nourish lives and inspire healthy eating—from farm to table.
             </p>

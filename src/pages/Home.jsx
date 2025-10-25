@@ -1,32 +1,56 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import mushroomimg from "../assets/Mushroom.jpg";
-import flowerimg from "../assets/Flower.jpg";
-import tshirtimg from "../assets/Tshirt.jpg";
+import oystermushroomimg from "../assets/oystermushroom.jpg";
+import roseimg from "../assets/rose.jpg";
+import jasmineimg from "../assets/jasmin.png";
+import hibiscusimg from "../assets/hibiscus.jpg";
+import dryroseimg from "../assets/dryrose.png";
+import drygingerimg from "../assets/dryginger.jpg";
 import Footor from "../components/Footor";
 
 function Home() {
   const slides = [
     {
       id: 1,
-      title: "Organic Mushroom",
-      image: mushroomimg,
-      description: "Rich in essential nutrients and antioxidants. Sustainably cultivated and 100% organic.",
-      details: ["Vitamin D rich", "Boosts immunity", "Sustainably grown"],
+      title: "Oyster Mushroom",
+      image: oystermushroomimg,
+      description: "Fresh and organically grown oyster mushrooms — rich in nutrients and perfect for healthy meals.",
+      details: ["High protein content", "Boosts immunity", "Sustainably cultivated"],
     },
     {
       id: 2,
-      title: "Eco-Friendly Flower",
-      image: flowerimg,
-      description: "Naturally grown flower collection. Perfect for home decor and botany lovers.",
-      details: ["Fresh blooms", "Zero chemical use", "Eco-certified packaging"],
+      title: "Rose",
+      image: roseimg,
+      description: "Naturally grown roses ideal for decoration, fragrance, and skincare applications.",
+      details: ["Pure fragrance", "No pesticides", "Freshly harvested"],
     },
     {
       id: 3,
-      title: "Earthwoom T-Shirt",
-      image: tshirtimg,
-      description: "Made from mushroom-infused bio-fabric, breathable and durable for daily wear.",
-      details: ["100% biodegradable fabric", "Soft & lightweight", "Eco printed design"],
+      title: "Jasmine",
+      image: jasmineimg,
+      description: "Fragrant jasmine flowers grown with care for aromatherapy and decoration.",
+      details: ["Soothing aroma", "Handpicked quality", "Eco-friendly packaging"],
+    },
+    {
+      id: 4,
+      title: "Hibiscus",
+      image: hibiscusimg,
+      description: "Bright and beautiful hibiscus flowers known for their herbal and skincare benefits.",
+      details: ["Rich in antioxidants", "Supports hair health", "Chemical-free cultivation"],
+    },
+    {
+      id: 5,
+      title: "Dry Rose",
+      image: dryroseimg,
+      description: "Dried rose petals perfect for tea blends, skincare, and potpourri.",
+      details: ["Sun-dried naturally", "Rich aroma", "Long shelf life"],
+    },
+    {
+      id: 6,
+      title: "Dry Ginger",
+      image: drygingerimg,
+      description: "Pure dried ginger with intense flavor and medicinal properties.",
+      details: ["Improves digestion", "Boosts metabolism", "Naturally processed"],
     },
   ];
 
@@ -44,21 +68,6 @@ function Home() {
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  const nextSlide = () => {
-    setFade(false);
-    setTimeout(() => {
-      setCurrentIndex(currentIndex === slides.length - 1 ? 0 : currentIndex + 1);
-      setFade(true);
-    }, 500);
-  };
-
-  const prevSlide = () => {
-    setFade(false);
-    setTimeout(() => {
-      setCurrentIndex(currentIndex === 0 ? slides.length - 1 : currentIndex - 1);
-      setFade(true);
-    }, 500);
-  };
 
   const currentSlide = slides[currentIndex];
 
@@ -74,86 +83,80 @@ function Home() {
   return (
     <>
       <Navbar />
-      {/* Image text Slider */}
-      <div className="bg-[#f3ede2] min-h-screen text-[#3e2f26] flex flex-col items-center py-16 px-6">
+      {/* 🌾 Image Text Slider */}
+      <div className="bg-gradient-to-b from-[#f6f2e8] to-[#ece3d3] min-h-screen text-[#3e2f26] flex flex-col items-center py-20 px-6 transition-all duration-700">
         {/* Hero Section */}
-        <div className="max-w-4xl text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-            Explore{" "}
-            <span className="text-[#d9b382]">Earthwoom Collection</span>
+        <div className="max-w-4xl text-center mb-14">
+          <h1 className="text-5xl md:text-6xl font-bold mb-5 tracking-wide leading-tight">
+            Discover the <span className="text-[#cfa86e]">Mushvalley Farms</span> Collection
           </h1>
-          <p className="text-lg md:text-xl text-[#5a4638]">
-            Every product tells a story — crafted with care, sustainability,
-            and nature’s wisdom.
+          <p className="text-lg md:text-xl text-[#6d5845] font-medium">
+            Every bloom and harvest is a story — grown with care, nurtured by nature, and crafted for you.
           </p>
         </div>
 
         {/* Image + Info Section */}
-        <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl gap-10">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-center md:justify-between max-w-6xl w-full gap-12">
+
           {/* Left Text */}
           <div
             key={`text-${currentIndex}`}
-            className={`md:w-1/3 text-left space-y-5 md:block hidden text-lg md:text-xl transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"
+            className={`md:w-1/2 min-h-[320px] flex flex-col justify-center space-y-6 text-lg md:text-xl transition-all duration-700 ease-in-out ${fade ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-5"
               }`}
+            style={{
+              transitionProperty: "opacity, transform",
+              maxWidth: "500px",
+            }}
           >
-            <h2 className="text-3xl font-semibold text-[#3e2f26]">
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#3e2f26] leading-snug">
               {currentSlide.title}
             </h2>
-            <p className="text-[#5a4638]">{currentSlide.description}</p>
-            <ul className="list-disc list-inside text-[#5a4638] ml-5">
+            <p className="text-[#5a4638] leading-relaxed flex-grow">
+              {currentSlide.description}
+            </p>
+            <ul className="list-disc list-inside text-[#5a4638] space-y-2">
               {currentSlide.details.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
-          </div>
-
-          {/* Image */}
-          <div className="relative md:w-1/2 flex justify-center">
-            <img
-              key={`image-${currentIndex}`}
-              src={currentSlide.image}
-              alt={currentSlide.title}
-              className={`rounded-lg shadow-lg w-full max-w-lg hover:scale-105 transition-transform duration-300 transition-opacity duration-500 ease-in-out ${fade ? "opacity-100" : "opacity-0"
-                }`}
-              style={{ maxHeight: "400px", objectFit: "cover" }}
-            />
-            {/* Navigation Arrows */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-[#3e2f26]/70 text-[#f3ede2] p-3 rounded-full hover:bg-[#3e2f26]/90 transition"
-              aria-label="Previous Slide"
-            >
-              ◄
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#3e2f26]/70 text-[#f3ede2] p-3 rounded-full hover:bg-[#3e2f26]/90 transition"
-              aria-label="Next Slide"
-            >
-              ►
+            <button className="mt-4 bg-[#cfa86e] text-white px-5 py-2 rounded-full shadow-md hover:bg-[#b98b4f] hover:scale-105 transition-all duration-300">
+              Learn More
             </button>
           </div>
 
-          {/* Right Text (mobile) */}
-          <div
-            key={`text-mobile-${currentIndex}`}
-            className={`md:w-1/3 md:hidden text-center mt-6 space-y-5 text-lg transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"
-              }`}
-          >
-            <h2 className="text-3xl font-semibold text-[#3e2f26]">
-              {currentSlide.title}
-            </h2>
-            <p className="text-[#5a4638]">{currentSlide.description}</p>
-            <ul className="list-disc list-inside text-[#5a4638] text-left inline-block ml-5">
-              {currentSlide.details.map((item, index) => (
-                <li key={index}>{item}</li>
+          {/* Right Image */}
+          <div className="relative w-full md:w-1/2 flex justify-center items-center px-4">
+            <div className="
+        relative 
+        w-full 
+        max-w-[600px] 
+        h-[250px] 
+        sm:h-[300px] 
+        md:h-[350px] 
+        lg:h-[400px] 
+        rounded-3xl 
+        overflow-hidden 
+        shadow-2xl 
+        flex 
+        justify-center 
+        items-center 
+        bg-[#f9f6f0]
+      ">
+              {slides.map((slide, idx) => (
+                <img
+                  key={idx}
+                  src={slide.image}
+                  alt={slide.title}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${idx === currentIndex ? "opacity-100" : "opacity-0"
+                    }`}
+                />
               ))}
-            </ul>
+            </div>
           </div>
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex space-x-3 mt-8">
+        <div className="flex space-x-3 mt-10">
           {slides.map((_, idx) => (
             <button
               key={idx}
@@ -162,47 +165,73 @@ function Home() {
                 setTimeout(() => {
                   setCurrentIndex(idx);
                   setFade(true);
-                }, 500);
+                }, 400);
               }}
-              className={`w-4 h-4 rounded-full ${idx === currentIndex ? "bg-[#d9b382]" : "bg-[#b7c6a0]"
-                } hover:bg-[#d9b382] transition`}
+              className={`w-4 h-4 rounded-full transition-all duration-300 ${idx === currentIndex
+                ? "bg-[#cfa86e] scale-110 shadow-md"
+                : "bg-[#b7c6a0] hover:bg-[#d9b382]"
+                }`}
               aria-label={`Go to slide ${idx + 1}`}
             ></button>
           ))}
         </div>
       </div>
 
+
       {/* Why Choose Us Section */}
       <section className="max-w-4xl mx-auto mt-20 text-center px-6 md:px-0">
         <h2 className="text-3xl font-bold text-[#3e2f26] mb-6">
-          Why Choose Earthwoom?
+          Why Choose Mushvalley Farms?
         </h2>
         <p className="text-[#5a4638] mb-12 text-lg">
           We combine sustainability, innovation, and the natural power of mushrooms to bring you products that are good for you and the planet.
         </p>
+
         <div className="flex flex-col md:flex-row justify-center gap-10">
           {[
             { title: "Sustainability", desc: "Eco-friendly production with zero waste." },
             { title: "Organic Quality", desc: "Certified organic ingredients and materials." },
             { title: "Innovation", desc: "Mushroom-based products pushing boundaries." },
           ].map(({ title, desc }) => (
-            <div key={title} className="bg-[#d9b382] rounded-lg p-6 shadow-lg">
-              <h3 className="font-semibold text-[#3e2f26] text-xl mb-2">{title}</h3>
-              <p className="text-[#3e2f26]">{desc}</p>
+            <div
+              key={title}
+              className="
+          bg-[#d9b382]
+          rounded-2xl
+          p-6
+          shadow-lg
+          transition-all
+          duration-300
+          transform
+          hover:scale-105
+          hover:shadow-2xl
+          hover:bg-[#e1c08f]
+          hover:-translate-y-2
+          cursor-pointer
+        "
+            >
+              <h3 className="font-semibold text-[#3e2f26] text-xl mb-2">
+                {title}
+              </h3>
+              <p className="text-[#3e2f26]">
+                {desc}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
+
       {/* Promotional Banner */}
       <section className="mt-20 bg-[#b7c6a0] text-[#3e2f26] py-16 px-6 rounded-xl text-center max-w-6xl mx-auto">
-        <h2 className="text-4xl font-extrabold mb-4">Lead the Change with Earthwoom</h2>
+        <h2 className="text-4xl font-extrabold mb-4">Lead the Change with Us !</h2>
         <p className="text-lg max-w-3xl mx-auto mb-8">
           Join us in transforming the world with products that blend nature, sustainability, and style.
         </p>
-        <button className="bg-[#3e2f26] text-[#f3ede2] px-8 py-3 rounded-full font-semibold hover:bg-[#2f241f] transition">
+        <button className="bg-[#3e2f26] text-[#f3ede2] px-8 py-3 rounded-full font-semibold text-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 hover:bg-[#2f241f] hover:shadow-lg hover:shadow-[#cfa86e]/40">
           Shop Now
         </button>
+
       </section>
 
       {/* Certificate Section */}
